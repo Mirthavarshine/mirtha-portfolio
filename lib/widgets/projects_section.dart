@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'dart:math' as math;
 
 class ProjectsSection extends StatefulWidget {
   const ProjectsSection({super.key});
@@ -16,51 +15,28 @@ class _ProjectsSectionState extends State<ProjectsSection>
   late Animation<double> _fadeAnimation;
   Map<int, AnimationController> _hoverControllers = {};
   Map<int, bool> _isHovered = {};
-  String _selectedCategory = 'All';
-  String _searchQuery = '';
 
   final List<Map<String, dynamic>> _projects = [
     {
-      'title': 'Drug Network Detection via Messaging Platforms',
-      'subtitle': 'Smart India Hackathon 2023',
+      'title': 'AI Prompt Evaluation & Structured Response Testing',
+      'subtitle': 'Prompt Engineering Project',
       'category': 'AI/ML',
-      'description': 'Developed an AI-powered system to detect and analyze drug trafficking networks through messaging platforms. Implemented machine learning algorithms for pattern recognition and real-time monitoring. The system achieved 85% accuracy in detection and won 2nd Prize in Smart India Hackathon 2023.',
-      'techStack': ['Python', 'Machine Learning', 'NLP', 'Flask', 'MongoDB', 'TensorFlow'],
+      'description':
+          'Designed and refined prompts for generating structured responses across different task scenarios. Evaluated AI-generated responses for relevance, consistency, instruction adherence, and formatting accuracy. Experimented with zero-shot and few-shot prompting techniques to improve response quality. Documented prompt variations and compared outputs to identify opportunities for prompt refinement.',
+      'techStack': ['Prompt Engineering', 'LLMs', 'Python', 'JSON'],
       'image': 'assets/project1.jpg',
-      'achievements': ['Won 2nd Prize in Smart India Hackathon 2023', 'Implemented real-time monitoring system', 'Achieved 85% accuracy in detection', 'Integrated with multiple messaging platforms'],
-      'date': 'December 2023',
+      'achievements': [
+        'Prompt Design and Refinement',
+        'Zero-shot and Few-shot Prompting',
+        'Structured Response Generation',
+        'AI Response Evaluation',
+        'Instruction Adherence',
+        'Output Comparison',
+        'Prompt Optimization',
+      ],
+      'date': '',
       'color': Color(0xFF0B3D91),
     },
-    {
-      'title': 'Indian Knowledge Systems',
-      'subtitle': 'VR Learning Module',
-      'category': 'VR/AR',
-      'description': 'Created an immersive Virtual Reality learning module showcasing Indian knowledge systems. Users can explore ancient texts, architectural marvels, and cultural heritage in an interactive 3D environment. The project demonstrates advanced VR development skills and educational technology integration.',
-      'techStack': ['Unity3D', 'C#', 'VR Development', '3D Modeling', 'Blender', 'Oculus SDK'],
-      'image': 'assets/project2.jpg',
-      'achievements': ['Immersive VR experience', 'Interactive 3D models', 'Educational content integration', 'Cross-platform VR support'],
-      'date': 'November 2023',
-      'color': Color(0xFF4CAF50),
-    },
-    {
-      'title': 'AI Chatbot for User Queries',
-      'subtitle': 'Intelligent Support System',
-      'category': 'AI/ML',
-      'description': 'Built an intelligent chatbot system that handles user queries using natural language processing. The system provides accurate responses and learns from user interactions to improve over time. Features multi-language support and real-time learning capabilities.',
-      'techStack': ['Python', 'NLP', 'TensorFlow', 'Flutter', 'Firebase', 'Dialogflow'],
-      'image': 'assets/project3.jpg',
-      'achievements': ['90% query resolution rate', 'Multi-language support', 'Real-time learning capabilities', 'Seamless integration with existing systems'],
-      'date': 'October 2023',
-      'color': Color(0xFF9C27B0),
-    },
-  ];
-
-  final List<Map<String, dynamic>> _categories = [
-    {'name': 'All', 'icon': Icons.all_inclusive, 'color': Color(0xFF0B3D91)},
-    {'name': 'AI/ML', 'icon': Icons.psychology, 'color': Color(0xFF0B3D91)},
-    {'name': 'VR/AR', 'icon': Icons.view_in_ar, 'color': Color(0xFF4CAF50)},
-    {'name': 'Web', 'icon': Icons.web, 'color': Color(0xFFF5C518)},
-    {'name': 'Mobile', 'icon': Icons.phone_android, 'color': Color(0xFF9C27B0)},
   ];
 
   @override
@@ -95,17 +71,7 @@ class _ProjectsSectionState extends State<ProjectsSection>
     super.dispose();
   }
 
-  List<Map<String, dynamic>> get _filteredProjects {
-    return _projects.where((project) {
-      final matchesCategory = _selectedCategory == 'All' || project['category'] == _selectedCategory;
-      final matchesSearch = _searchQuery.isEmpty || 
-          project['title'].toLowerCase().contains(_searchQuery.toLowerCase()) ||
-          project['description'].toLowerCase().contains(_searchQuery.toLowerCase()) ||
-          (project['techStack'] as List<String>).any((tech) => 
-              tech.toLowerCase().contains(_searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
-    }).toList();
-  }
+  List<Map<String, dynamic>> get _filteredProjects => _projects;
 
   @override
   Widget build(BuildContext context) {
@@ -145,160 +111,31 @@ class _ProjectsSectionState extends State<ProjectsSection>
                       ),
                       const SizedBox(height: 60),
                       
-                      // Search Bar
-                      Container(
-                        margin: const EdgeInsets.only(bottom: 30),
-                        child: TextField(
-                          onChanged: (value) {
-                            setState(() {
-                              _searchQuery = value;
-                            });
-                          },
-                          decoration: InputDecoration(
-                            hintText: 'Search projects...',
-                            prefixIcon: const Icon(Icons.search, color: Color(0xFF0B3D91)),
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              borderSide: BorderSide.none,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(25),
-                              borderSide: const BorderSide(color: Color(0xFF0B3D91), width: 2),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                          ),
-                        ),
-                      ),
-                      
-                      // Category Filters
+                      // Single featured project — no search/filter clutter
                       LayoutBuilder(
                         builder: (context, constraints) {
                           if (constraints.maxWidth > 768) {
-                            // Desktop Filters
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: _categories.map((category) {
-                                final isSelected = _selectedCategory == category['name'];
-                                return Container(
-                                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      setState(() {
-                                        _selectedCategory = category['name'];
-                                      });
-                                    },
-                                    icon: Icon(
-                                      category['icon'],
-                                      size: 20,
-                                      color: isSelected ? Colors.white : category['color'],
-                                    ),
-                                    label: Text(
-                                      category['name'],
-                                      style: GoogleFonts.inter(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500,
-                                        color: isSelected ? Colors.white : category['color'],
-                                      ),
-                                    ),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: isSelected ? category['color'] : Colors.white,
-                                      foregroundColor: isSelected ? Colors.white : category['color'],
-                                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(25),
-                                        side: BorderSide(
-                                          color: category['color'],
-                                          width: 2,
+                            return Center(
+                              child: ConstrainedBox(
+                                constraints: const BoxConstraints(maxWidth: 560),
+                                child: SizedBox(
+                                  height: 580,
+                                  child: AnimationConfiguration.staggeredList(
+                                    position: 0,
+                                    duration: const Duration(milliseconds: 600),
+                                    child: ScaleAnimation(
+                                      child: FadeInAnimation(
+                                        child: _buildProjectCard(
+                                          _filteredProjects.first,
+                                          0,
                                         ),
                                       ),
-                                      elevation: isSelected ? 4 : 0,
                                     ),
                                   ),
-                                );
-                              }).toList(),
-                            );
-                          } else {
-                            // Mobile Filters
-                            return Wrap(
-                              spacing: 8,
-                              runSpacing: 8,
-                              alignment: WrapAlignment.center,
-                              children: _categories.map((category) {
-                                final isSelected = _selectedCategory == category['name'];
-                                return ElevatedButton.icon(
-                                  onPressed: () {
-                                    setState(() {
-                                      _selectedCategory = category['name'];
-                                    });
-                                  },
-                                  icon: Icon(
-                                    category['icon'],
-                                    size: 16,
-                                    color: isSelected ? Colors.white : category['color'],
-                                  ),
-                                  label: Text(
-                                    category['name'],
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                      color: isSelected ? Colors.white : category['color'],
-                                    ),
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: isSelected ? category['color'] : Colors.white,
-                                    foregroundColor: isSelected ? Colors.white : category['color'],
-                                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      side: BorderSide(
-                                        color: category['color'],
-                                        width: 1.5,
-                                      ),
-                                    ),
-                                    elevation: isSelected ? 4 : 0,
-                                  ),
-                                );
-                              }).toList(),
-                            );
-                          }
-                        },
-                      ),
-                      
-                      const SizedBox(height: 40),
-                      
-                      // Projects Grid
-                      LayoutBuilder(
-                        builder: (context, constraints) {
-                          if (constraints.maxWidth > 768) {
-                            // Desktop Layout
-                            return GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 24,
-                                mainAxisSpacing: 24,
-                                childAspectRatio: 0.8,
+                                ),
                               ),
-                              itemCount: _filteredProjects.length,
-                              itemBuilder: (context, index) {
-                                final project = _filteredProjects[index];
-                                return AnimationConfiguration.staggeredGrid(
-                                  position: index,
-                                  duration: const Duration(milliseconds: 600),
-                                  columnCount: 2,
-                                  child: ScaleAnimation(
-                                    child: FadeInAnimation(
-                                      child: _buildProjectCard(project, index),
-                                    ),
-                                  ),
-                                );
-                              },
                             );
                           } else {
-                            // Mobile Layout
                             return Column(
                               children: _filteredProjects.asMap().entries.map((entry) {
                                 int index = entry.key;
@@ -311,6 +148,7 @@ class _ProjectsSectionState extends State<ProjectsSection>
                                     child: FadeInAnimation(
                                       child: Container(
                                         margin: const EdgeInsets.only(bottom: 24),
+                                        height: 560,
                                         child: _buildProjectCard(project, index),
                                       ),
                                     ),
@@ -459,15 +297,17 @@ class _ProjectsSectionState extends State<ProjectsSection>
                                     color: project['color'],
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                Text(
-                                  project['date'],
-                                  style: GoogleFonts.inter(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF666666),
+                                if ((project['date'] as String).isNotEmpty) ...[
+                                  const SizedBox(height: 8),
+                                  Text(
+                                    project['date'],
+                                    style: GoogleFonts.inter(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xFF666666),
+                                    ),
                                   ),
-                                ),
+                                ],
                                 const SizedBox(height: 16),
                                 Text(
                                   project['description'],
@@ -486,7 +326,7 @@ class _ProjectsSectionState extends State<ProjectsSection>
                                 Wrap(
                                   spacing: 8,
                                   runSpacing: 8,
-                                  children: (project['techStack'] as List<String>).take(3).map((tech) {
+                                  children: (project['techStack'] as List<String>).map((tech) {
                                     return Container(
                                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                       decoration: BoxDecoration(
@@ -608,15 +448,17 @@ class _ProjectsSectionState extends State<ProjectsSection>
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 12),
-                              Text(
-                                project['date'],
-                                style: GoogleFonts.inter(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFFF5C518),
+                              if ((project['date'] as String).isNotEmpty) ...[
+                                const SizedBox(width: 12),
+                                Text(
+                                  project['date'],
+                                  style: GoogleFonts.inter(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFFF5C518),
+                                  ),
                                 ),
-                              ),
+                              ],
                             ],
                           ),
                         ],
@@ -690,7 +532,7 @@ class _ProjectsSectionState extends State<ProjectsSection>
                       const SizedBox(height: 24),
                       
                       Text(
-                        'Key Achievements',
+                        'Project Highlights',
                         style: GoogleFonts.poppins(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'dart:math' as math;
+import '../utils/resume_utils.dart';
 
 class HeroSection extends StatefulWidget {
   final GlobalKey? projectsKey;
@@ -30,7 +30,7 @@ class _HeroSectionState extends State<HeroSection>
   
   // Typing animation variables
   String _displayText = "";
-  String _fullText = "Software Developer";
+  String _fullText = "Software Engineer | Generative AI & Prompt Engineer";
   int _textIndex = 0;
   bool _isTypingComplete = false;
 
@@ -104,7 +104,7 @@ class _HeroSectionState extends State<HeroSection>
         _displayText = _fullText.substring(0, _textIndex + 1);
         _textIndex++;
       });
-      Future.delayed(const Duration(milliseconds: 150), _typeNextCharacter);
+      Future.delayed(const Duration(milliseconds: 50), _typeNextCharacter);
     } else {
       setState(() {
         _isTypingComplete = true;
@@ -220,7 +220,7 @@ class _HeroSectionState extends State<HeroSection>
                                                     ],
                                                   ),
                                                   child: CircleAvatar(
-                                                    radius: 200,
+                                                    radius: 140,
                                                     backgroundColor: const Color(0xFF0B3D91),
                                                     backgroundImage: const AssetImage('assets/mirtha_photo.jpg'),
                                                     onBackgroundImageError: (exception, stackTrace) {
@@ -280,13 +280,16 @@ class _HeroSectionState extends State<HeroSection>
                                         animation: _typingAnimation,
                                         builder: (context, child) {
                                           return Row(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text(
-                                                _displayText,
-                                                style: GoogleFonts.inter(
-                                                  fontSize: 24,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white,
+                                              Flexible(
+                                                child: Text(
+                                                  _displayText,
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.white,
+                                                  ),
                                                 ),
                                               ),
                                               if (!_isTypingComplete)
@@ -297,7 +300,7 @@ class _HeroSectionState extends State<HeroSection>
                                                     width: 2,
                                                     height: 24,
                                                     color: Colors.white,
-                                                    margin: const EdgeInsets.only(left: 2),
+                                                    margin: const EdgeInsets.only(left: 2, top: 4),
                                                   ),
                                                 ),
                                             ],
@@ -315,7 +318,7 @@ class _HeroSectionState extends State<HeroSection>
                                           borderRadius: BorderRadius.circular(25),
                                         ),
                                         child: Text(
-                                          "QA Intern at Tartlabs | Passionate about Building Efficient, Scalable, and User-Centric Applications",
+                                          "Prompt Engineering enthusiast with experience in software development, API integration, quality assurance, and AI-assisted problem-solving.",
                                           style: GoogleFonts.inter(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
@@ -360,22 +363,17 @@ class _HeroSectionState extends State<HeroSection>
                                           const SizedBox(width: 20),
                                           ElevatedButton.icon(
                                             onPressed: () async {
-                                              // Force download resume functionality
                                               try {
-                                                // Create a blob URL for the PDF to force download
-                                                final Uri url = Uri.parse('assets/resume.pdf');
-                                                if (await canLaunchUrl(url)) {
-                                                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                                                } else {
-                                                  await launchUrl(url, mode: LaunchMode.inAppWebView);
-                                                }
+                                                await ResumeUtils.openResume();
                                               } catch (e) {
-                                                ScaffoldMessenger.of(context).showSnackBar(
-                                                  SnackBar(
-                                                    content: Text('Error downloading resume: $e'),
-                                                    backgroundColor: Colors.red,
-                                                  ),
-                                                );
+                                                if (context.mounted) {
+                                                  ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(
+                                                      content: Text('Error downloading resume: $e'),
+                                                      backgroundColor: Colors.red,
+                                                    ),
+                                                  );
+                                                }
                                               }
                                             },
                                             icon: const Icon(Icons.download),
@@ -450,7 +448,7 @@ class _HeroSectionState extends State<HeroSection>
                                       ],
                                     ),
                                     child: CircleAvatar(
-                                      radius: 125,
+                                      radius: 95,
                                       backgroundColor: const Color(0xFF0B3D91),
                                       backgroundImage: const AssetImage('assets/mirtha_photo.jpg'),
                                       onBackgroundImageError: (exception, stackTrace) {
@@ -504,13 +502,17 @@ class _HeroSectionState extends State<HeroSection>
                                       builder: (context, child) {
                                         return Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              _displayText,
-                                              style: GoogleFonts.inter(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white,
+                                            Flexible(
+                                              child: Text(
+                                                _displayText,
+                                                style: GoogleFonts.inter(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.white,
+                                                ),
+                                                textAlign: TextAlign.center,
                                               ),
                                             ),
                                             if (!_isTypingComplete)
@@ -521,7 +523,7 @@ class _HeroSectionState extends State<HeroSection>
                                                   width: 2,
                                                   height: 18,
                                                   color: Colors.white,
-                                                  margin: const EdgeInsets.only(left: 2),
+                                                  margin: const EdgeInsets.only(left: 2, top: 2),
                                                 ),
                                               ),
                                           ],
@@ -539,7 +541,7 @@ class _HeroSectionState extends State<HeroSection>
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Text(
-                                        "QA Intern at Tartlabs | Passionate about Building Efficient, Scalable, and User-Centric Applications",
+                                        "Prompt Engineering enthusiast with experience in software development, API integration, quality assurance, and AI-assisted problem-solving.",
                                         style: GoogleFonts.inter(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
@@ -585,21 +587,17 @@ class _HeroSectionState extends State<HeroSection>
                                         const SizedBox(height: 16),
                                         ElevatedButton.icon(
                                           onPressed: () async {
-                                            // Force download resume functionality
                                             try {
-                                              final Uri url = Uri.parse('assets/resume.pdf');
-                                              if (await canLaunchUrl(url)) {
-                                                await launchUrl(url, mode: LaunchMode.externalApplication);
-                                              } else {
-                                                await launchUrl(url, mode: LaunchMode.inAppWebView);
-                                              }
+                                              await ResumeUtils.openResume();
                                             } catch (e) {
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                SnackBar(
-                                                  content: Text('Error downloading resume: $e'),
-                                                  backgroundColor: Colors.red,
-                                                ),
-                                              );
+                                              if (context.mounted) {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                  SnackBar(
+                                                    content: Text('Error downloading resume: $e'),
+                                                    backgroundColor: Colors.red,
+                                                  ),
+                                                );
+                                              }
                                             }
                                           },
                                           icon: const Icon(Icons.download),

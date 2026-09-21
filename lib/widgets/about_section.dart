@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
+import '../utils/resume_utils.dart';
 
 class AboutSection extends StatefulWidget {
   const AboutSection({super.key});
@@ -126,7 +126,7 @@ class _AboutSectionState extends State<AboutSection>
                                                         ],
                                                       ),
                                                       child: CircleAvatar(
-                                                        radius: 175,
+                                                        radius: 130,
                                                         backgroundColor: const Color(0xFF0B3D91),
                                                         backgroundImage: const AssetImage('assets/mirtha_photo.jpg'),
                                                         onBackgroundImageError: (exception, stackTrace) {
@@ -172,7 +172,7 @@ class _AboutSectionState extends State<AboutSection>
                                         ),
                                         const SizedBox(height: 30),
                                         Text(
-                                          'Career Objective',
+                                          'Professional Summary',
                                           style: GoogleFonts.montserrat(
                                             fontSize: 24,
                                             fontWeight: FontWeight.w600,
@@ -181,7 +181,7 @@ class _AboutSectionState extends State<AboutSection>
                                         ),
                                         const SizedBox(height: 20),
                                         Text(
-                                          'Passionate and detail-oriented final-year Computer Science Engineering student with internship experience in Quality Assurance Testing and UI/UX design. Currently building expertise in software development across multiple technologies and eager to contribute to innovative, user-focused software solutions. Seeking a dynamic tech environment to grow as a full-stack software developer and create impactful applications.',
+                                          'Entry-level Prompt Engineering enthusiast with a background in software development, API integration, and quality assurance. Familiar with prompt design, prompt refinement, zero-shot and few-shot prompting, structured outputs, and AI response evaluation. Hands-on experience using AI tools for code understanding, debugging, and problem-solving. Knowledge of Python fundamentals, REST APIs, JSON, and software testing. Seeking an entry-level Prompt Engineer or Generative AI role to apply technical skills, develop practical AI solutions, and contribute to improving AI-generated outputs.',
                                           style: GoogleFonts.inter(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
@@ -196,12 +196,7 @@ class _AboutSectionState extends State<AboutSection>
                                             ElevatedButton.icon(
                                               onPressed: () async {
                                                 try {
-                                                  final Uri url = Uri.parse('https://yellow-merilyn-98.tiiny.site');
-                                                  if (await canLaunchUrl(url)) {
-                                                    await launchUrl(url, mode: LaunchMode.externalApplication);
-                                                  } else {
-                                                    await launchUrl(url, mode: LaunchMode.inAppWebView);
-                                                  }
+                                                  await ResumeUtils.openResume();
                                                 } catch (e) {
                                                   if (mounted) {
                                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -238,12 +233,7 @@ class _AboutSectionState extends State<AboutSection>
                                             ElevatedButton.icon(
                                               onPressed: () async {
                                                 try {
-                                                  final Uri url = Uri.parse('https://yellow-merilyn-98.tiiny.site');
-                                                  if (await canLaunchUrl(url)) {
-                                                    await launchUrl(url, mode: LaunchMode.externalApplication);
-                                                  } else {
-                                                    await launchUrl(url, mode: LaunchMode.inAppWebView);
-                                                  }
+                                                  await ResumeUtils.openResume();
                                                 } catch (e) {
                                                   if (mounted) {
                                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -333,7 +323,7 @@ class _AboutSectionState extends State<AboutSection>
                                         ),
                                         const SizedBox(height: 8),
                                         Text(
-                                          'I love debugging code almost as much as I love creating it! There\'s something satisfying about finding and fixing those elusive bugs.',
+                                          'I enjoy refining prompts and evaluating AI responses almost as much as writing code — finding the right instruction that unlocks clearer, more reliable outputs is deeply satisfying.',
                                           style: GoogleFonts.inter(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
@@ -402,7 +392,7 @@ class _AboutSectionState extends State<AboutSection>
                                             ],
                                           ),
                                           child: CircleAvatar(
-                                            radius: 125,
+                                            radius: 95,
                                             backgroundColor: const Color(0xFF0B3D91),
                                             backgroundImage: const AssetImage('assets/mirtha_photo.jpg'),
                                             onBackgroundImageError: (exception, stackTrace) {
@@ -445,7 +435,7 @@ class _AboutSectionState extends State<AboutSection>
                                 ),
                                 const SizedBox(height: 30),
                                 Text(
-                                  'Career Objective',
+                                  'Professional Summary',
                                   style: GoogleFonts.montserrat(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w600,
@@ -454,7 +444,7 @@ class _AboutSectionState extends State<AboutSection>
                                 ),
                                 const SizedBox(height: 20),
                                 Text(
-                                  'Passionate and detail-oriented final-year Computer Science Engineering student with internship experience in Quality Assurance Testing and UI/UX design. Currently building expertise in software development across multiple technologies and eager to contribute to innovative, user-focused software solutions. Seeking a dynamic tech environment to grow as a full-stack software developer and create impactful applications.',
+                                  'Entry-level Prompt Engineering enthusiast with a background in software development, API integration, and quality assurance. Familiar with prompt design, prompt refinement, zero-shot and few-shot prompting, structured outputs, and AI response evaluation. Hands-on experience using AI tools for code understanding, debugging, and problem-solving. Knowledge of Python fundamentals, REST APIs, JSON, and software testing. Seeking an entry-level Prompt Engineer or Generative AI role to apply technical skills, develop practical AI solutions, and contribute to improving AI-generated outputs.',
                                   style: GoogleFonts.inter(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w400,
@@ -470,12 +460,7 @@ class _AboutSectionState extends State<AboutSection>
                                     ElevatedButton.icon(
                                       onPressed: () async {
                                         try {
-                                          final Uri url = Uri.parse('https://yellow-merilyn-98.tiiny.site');
-                                          if (await canLaunchUrl(url)) {
-                                            await launchUrl(url, mode: LaunchMode.externalApplication);
-                                          } else {
-                                            await launchUrl(url, mode: LaunchMode.inAppWebView);
-                                          }
+                                          await ResumeUtils.openResume();
                                         } catch (e) {
                                           if (mounted) {
                                             ScaffoldMessenger.of(context).showSnackBar(
@@ -512,12 +497,7 @@ class _AboutSectionState extends State<AboutSection>
                                     ElevatedButton.icon(
                                       onPressed: () async {
                                         try {
-                                          final Uri url = Uri.parse('https://yellow-merilyn-98.tiiny.site');
-                                          if (await canLaunchUrl(url)) {
-                                            await launchUrl(url, mode: LaunchMode.externalApplication);
-                                          } else {
-                                            await launchUrl(url, mode: LaunchMode.inAppWebView);
-                                          }
+                                          await ResumeUtils.openResume();
                                         } catch (e) {
                                           if (mounted) {
                                             ScaffoldMessenger.of(context).showSnackBar(
@@ -603,7 +583,7 @@ class _AboutSectionState extends State<AboutSection>
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
-                                          'I love debugging code almost as much as I love creating it!',
+                                          'I enjoy refining prompts and evaluating AI responses almost as much as writing code!',
                                           style: GoogleFonts.inter(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,

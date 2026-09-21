@@ -752,7 +752,7 @@ class _ContactSectionState extends State<ContactSection>
               const SizedBox(height: 12),
               _buildContactDetail(
                 Icons.phone,
-                '+91 8148085973',
+                '+91 81480 85973',
                 () => _launchUrl('tel:+918148085973'),
               ),
               const SizedBox(height: 12),

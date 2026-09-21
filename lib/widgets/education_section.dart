@@ -116,7 +116,7 @@ class _EducationSectionState extends State<EducationSection>
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'B.E. in Computer Science and Engineering',
+                                            'B.E. Computer Science and Engineering',
                                             style: GoogleFonts.poppins(
                                               fontSize: 24,
                                               fontWeight: FontWeight.w600,
@@ -125,7 +125,7 @@ class _EducationSectionState extends State<EducationSection>
                                           ),
                                           const SizedBox(height: 8),
                                           Text(
-                                            'Jansons Institute of Technology',
+                                            'Jansons Institute of Technology, Coimbatore, Tamil Nadu',
                                             style: GoogleFonts.inter(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w500,
@@ -145,7 +145,7 @@ class _EducationSectionState extends State<EducationSection>
                                                   borderRadius: BorderRadius.circular(20),
                                                 ),
                                                 child: Text(
-                                                  'CGPA: 7.75',
+                                                  'CGPA: 7.87/10',
                                                   style: GoogleFonts.inter(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w600,
@@ -164,7 +164,7 @@ class _EducationSectionState extends State<EducationSection>
                                                   borderRadius: BorderRadius.circular(20),
                                                 ),
                                                 child: Text(
-                                                  '2022 - 2026',
+                                                  'June 2022 – March 2026',
                                                   style: GoogleFonts.inter(
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w500,
@@ -176,7 +176,7 @@ class _EducationSectionState extends State<EducationSection>
                                           ),
                                           const SizedBox(height: 20),
                                           Text(
-                                            'Currently pursuing my final year in Computer Science and Engineering with a strong focus on software development, quality assurance, and emerging technologies.',
+                                            'Pursuing Computer Science and Engineering with a focus on Prompt Engineering, Generative AI, software development, and quality assurance.',
                                             style: GoogleFonts.inter(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w400,
@@ -214,7 +214,7 @@ class _EducationSectionState extends State<EducationSection>
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'B.E. in Computer Science and Engineering',
+                                          'B.E. Computer Science and Engineering',
                                           style: GoogleFonts.poppins(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w600,
@@ -224,7 +224,7 @@ class _EducationSectionState extends State<EducationSection>
                                         ),
                                         const SizedBox(height: 8),
                                         Text(
-                                          'Jansons Institute of Technology',
+                                          'Jansons Institute of Technology, Coimbatore, Tamil Nadu',
                                           style: GoogleFonts.inter(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500,
@@ -248,7 +248,7 @@ class _EducationSectionState extends State<EducationSection>
                                                 borderRadius: BorderRadius.circular(20),
                                               ),
                                               child: Text(
-                                                'CGPA: 7.75',
+                                                'CGPA: 7.87/10',
                                                 style: GoogleFonts.inter(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w600,
@@ -266,7 +266,7 @@ class _EducationSectionState extends State<EducationSection>
                                                 borderRadius: BorderRadius.circular(20),
                                               ),
                                               child: Text(
-                                                '2022 - 2026',
+                                                'June 2022 – March 2026',
                                                 style: GoogleFonts.inter(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w500,
@@ -278,7 +278,7 @@ class _EducationSectionState extends State<EducationSection>
                                         ),
                                         const SizedBox(height: 20),
                                         Text(
-                                          'Currently pursuing my final year in Computer Science and Engineering with a strong focus on software development, quality assurance, and emerging technologies.',
+                                          'Pursuing Computer Science and Engineering with a focus on Prompt Engineering, Generative AI, software development, and quality assurance.',
                                           style: GoogleFonts.inter(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w400,

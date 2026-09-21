@@ -16,35 +16,23 @@ class _ExperienceSectionState extends State<ExperienceSection>
 
   final List<Map<String, dynamic>> _experiences = [
     {
-      'title': 'UI/UX Design Intern',
-      'company': 'CareerNinja',
-      'duration': 'Feb 2024',
-      'description': 'Worked on designing user interfaces and user experience for various digital products.',
+      'title': 'Software Engineer',
+      'company': 'Tart Labs',
+      'duration': 'September 2025 – Present · Coimbatore, Tamil Nadu',
+      'description':
+          'Apply prompt engineering and AI-assisted development practices to support software engineering workflows, including structured response generation, debugging, and application development.',
       'responsibilities': [
-        'Designed user interfaces for web and mobile applications',
-        'Conducted user research and usability testing',
-        'Created wireframes, prototypes, and mockups',
-        'Collaborated with development teams to implement designs',
-        'Improved user experience based on feedback and analytics',
+        'Apply prompt engineering fundamentals to create clear instructions and generate relevant, structured AI responses for development-related tasks.',
+        'Refine prompts to improve response accuracy, clarity, and adherence to specific technical requirements.',
+        'Experiment with prompting approaches to support code explanation, error analysis, code refinement, and technical problem-solving.',
+        'Evaluate AI-generated outputs for relevance, correctness, and alignment with expected requirements.',
+        'Design task-specific prompts with clear context and expected outputs to support software testing, debugging, and application development workflows.',
+        'Apply structured prompting techniques to analyze technical requirements and generate step-by-step solutions.',
+        'Work with Flutter, Dart, REST APIs, and application data flows during development and maintenance.',
+        'Construct zero-shot and few-shot prompt templates to automate synthetic data generation and optimize LLM-driven test case creation.',
       ],
-      'icon': Icons.design_services,
-      'color': Color(0xFF9C27B0),
-    },
-    {
-      'title': 'QA Tester Intern',
-      'company': 'Tartlabs',
-      'duration': '3 months onsite',
-      'description': 'Gained hands-on experience in quality assurance testing and software validation.',
-      'responsibilities': [
-        'Performed manual testing on various software applications',
-        'Created and executed test cases and test plans',
-        'Identified and reported bugs and issues',
-        'Collaborated with development teams for bug fixes',
-        'Participated in agile development processes',
-        'Documented testing procedures and results',
-      ],
-      'icon': Icons.bug_report,
-      'color': Color(0xFF4CAF50),
+      'icon': Icons.psychology,
+      'color': Color(0xFF0B3D91),
     },
   ];
 
